@@ -92,8 +92,9 @@
 
 .page-archive-header {
   background: #0a0a0a;
-  margin: calc(51px + 2rem) 1.5rem 0;
   border-radius: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   padding: 5rem 0;
   position: relative;
   overflow: hidden;
@@ -112,9 +113,7 @@
     pointer-events: none;
   }
 
-  .container { position: relative; z-index: 1; max-width: $max-width; }
-
-  @include mobile { margin: calc(51px + 1rem) 0.75rem 0; padding: 3.5rem 0; }
+  .container { position: relative; z-index: 1; max-width: $max-width; padding-top: 5rem; }
 }
 
 .page-archive-eyebrow {
