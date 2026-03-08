@@ -12,12 +12,15 @@
 
 .single-post-hero {
   background: #0a0a0a;
-  margin: calc(51px + 2rem) 1.5rem 0;
-  border-radius: 20px;
   padding: 4.5rem 0;
   position: relative;
   overflow: hidden;
   animation: single-card-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  margin: 0;
+  @media (min-width: 768px) {
+    margin: calc(51px + 2rem) 1.5rem 0;
+    border-radius: 20px;
+  }
 
   // Glow when no image
   &:not(.has-image)::before {

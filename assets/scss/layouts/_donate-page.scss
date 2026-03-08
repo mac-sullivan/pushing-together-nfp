@@ -28,11 +28,12 @@
   align-items: flex-end;
   overflow: hidden;
   background: #080808;
-  margin: 3.25rem 1.125rem 1.125rem;
   border-radius: 20px;
   animation: donate-card-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-
-  @include mobile { margin: calc(51px + 1rem) 0.5rem 0; min-height: 60vh; }
+  margin: 0; 
+  border-top-left-radius: 0; 
+  border-top-right-radius: 0;
+  @include mobile { min-height: 60vh; }
 }
 
 .donate-hero-bg {

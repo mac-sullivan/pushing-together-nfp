@@ -52,20 +52,19 @@
           <?php endwhile; ?>
         </div>
 
-        <!-- CTA Banner -->
-        <?php get_template_part('template-parts/layouts/cta_banner'); ?>
-
         <!-- Pagination -->
         <div class="blog-pagination">
           <?php the_posts_pagination(['mid_size' => 2, 'prev_text' => '← Newer', 'next_text' => 'Older →']); ?>
         </div>
 
-      <?php else : ?>
-        <div class="blog-empty">
-          <p>No posts yet — check back soon.</p>
-        </div>
-      <?php endif; ?>
-    </div>
+        <?php else : ?>
+          <div class="blog-empty">
+            <p>No posts yet — check back soon.</p>
+          </div>
+        <?php endif; ?>
+  </div>
+        <!-- CTA Banner -->
+        <?php get_template_part('template-parts/layouts/cta_banner'); ?>
   </div>
 
 </div>
