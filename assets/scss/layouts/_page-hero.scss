@@ -79,3 +79,81 @@
   line-height: 1.75;
   animation: page-hero-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
 }
+
+// ─── Shared archive-style dark header (contact, donate) ───────
+@keyframes archive-header-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes archive-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-archive-header {
+  background: #0a0a0a;
+  margin: calc(51px + 2rem) 1.5rem 0;
+  border-radius: 20px;
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+  animation: archive-header-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 600px;
+    background: radial-gradient(circle, rgba($purple, 0.2) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .container { position: relative; z-index: 1; max-width: $max-width; }
+
+  @include mobile { margin: calc(51px + 1rem) 0.75rem 0; padding: 3.5rem 0; }
+}
+
+.page-archive-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $purple-light;
+  margin-bottom: 1.25rem;
+  animation: archive-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: $purple-light;
+    flex-shrink: 0;
+  }
+}
+
+.page-archive-title {
+  font-family: $font-heading;
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  font-weight: 800;
+  color: $white;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  margin: 0 0 1rem;
+  animation: archive-fade-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.page-archive-sub {
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  color: rgba($white, 0.52);
+  max-width: 44ch;
+  line-height: 1.75;
+  animation: archive-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}

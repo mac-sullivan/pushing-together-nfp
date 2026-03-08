@@ -1,6 +1,6 @@
 @use '../abstracts' as *;
 
-// ─── Blog archive ─────────────────────────────────────────────
+// ─── Blog archive header ──────────────────────────────────────
 @keyframes blog-header-in {
   from { opacity: 0; transform: scale(0.97); }
   to   { opacity: 1; transform: scale(1); }
@@ -14,10 +14,16 @@
   background: #0a0a0a;
   margin: 0;
   border-radius: 20px;
-  padding: 10rem 0 4rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 5rem 0;
   position: relative;
   overflow: hidden;
   animation: blog-header-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  .container {
+    padding-top: 5rem;
+  }
 
   &::before {
     content: '';
@@ -33,6 +39,7 @@
   }
 
   .container { position: relative; z-index: 1; max-width: $max-width; }
+
 }
 
 .blog-eyebrow {
@@ -76,27 +83,238 @@
   animation: blog-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
 }
 
+// ─── Blog archive body ────────────────────────────────────────
+.blog-archive-body {
+  background: #f8f7f5;
+  padding: 4rem 0 6rem;
+
+  .container { max-width: $max-width; }
+}
+
+// ─── Post grid ────────────────────────────────────────────────
 .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+
+  @include tablet { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+// ─── Blog card ────────────────────────────────────────────────
+.blog-card {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin: 5rem 0;
   flex-direction: column;
-  @media (min-width: 768px) {
-    flex-direction: row;
+  border-radius: 20px;
+  overflow: hidden;
+  background: $white;
+  box-shadow: 0 1px 3px rgba(#000, 0.06), 0 4px 16px rgba(#000, 0.04);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 2px 6px rgba(#000, 0.07), 0 20px 56px rgba(#000, 0.13);
+  }
+}
+
+.blog-card-img-link {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.blog-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #0d0820;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .blog-card {
-    flex: 1;
-    background-color: #f7f7f7;
-    border-radius: 20px;
+  .blog-card:hover & img { transform: scale(1.05); }
+}
 
-    img {
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
+.blog-card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(140deg, #1e0b45 0%, #0d0820 45%, #160535 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  // Purple glow orb
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba($purple, 0.4) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  // Monogram
+  &::after {
+    content: 'PT';
+    font-family: $font-heading;
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: rgba($white, 0.07);
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Category pill overlaid on the image
+.blog-card-cat-overlay {
+  position: absolute;
+  bottom: 0.875rem;
+  left: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $white;
+  background: rgba($purple, 0.88);
+  backdrop-filter: blur(10px);
+  border-radius: 100px;
+  padding: 0.28rem 0.75rem;
+  z-index: 2;
+}
+
+.blog-card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.375rem 1.5rem 1.25rem;
+  flex: 1;
+  gap: 0.5rem;
+}
+
+.blog-card-title {
+  font-family: $font-heading;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0d0d0d;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  margin: 0;
+
+  a {
+    color: inherit;
+    transition: color 0.2s ease;
+    &:hover { color: $purple; text-decoration: none; }
+  }
+}
+
+.blog-card-excerpt {
+  font-size: 0.875rem;
+  color: #787878;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  margin-top: 0.25rem;
+  border-top: 1px solid #f0eeeb;
+}
+
+.blog-card-date {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #bbb;
+  font-family: $font-main;
+}
+
+.blog-card-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: $purple;
+  font-family: $font-main;
+  transition: gap 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+
+  &:hover { text-decoration: none; gap: 0.5rem; color: $purple-dark; }
+
+  svg {
+    flex-shrink: 0;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &:hover svg { transform: translateX(2px); }
+}
+
+// ─── Pagination ───────────────────────────────────────────────
+.blog-pagination {
+  margin-top: 2rem;
+  text-align: center;
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #6b6b6b;
+    border: 1.5px solid #e4e2de;
+    transition: all 0.2s ease;
+    font-family: $font-main;
+
+    &:hover { border-color: $purple; color: $purple; text-decoration: none; }
+
+    &.current {
+      background: $purple;
+      color: $white;
+      border-color: $purple;
     }
-    .blog-card-body {
-      padding: 1.25rem;
+
+    &.prev, &.next {
+      width: auto;
+      padding: 0 1rem;
+      font-size: 0.82rem;
     }
   }
+}
+
+// ─── Empty state ──────────────────────────────────────────────
+.blog-empty {
+  text-align: center;
+  padding: 4rem 0;
+  color: #aaa;
+  font-style: italic;
 }

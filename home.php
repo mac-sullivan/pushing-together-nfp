@@ -31,11 +31,11 @@
                   <div class="blog-card-img-placeholder"></div>
                 <?php endif; ?>
               </div>
+              <?php if ( $cat_name ) : ?>
+                <span class="blog-card-cat-overlay"><?php echo $cat_name; ?></span>
+              <?php endif; ?>
             </a>
             <div class="blog-card-body">
-              <?php if ( $cat_name ) : ?>
-                <span class="blog-card-cat"><?php echo $cat_name; ?></span>
-              <?php endif; ?>
               <h2 class="blog-card-title">
                 <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
               </h2>

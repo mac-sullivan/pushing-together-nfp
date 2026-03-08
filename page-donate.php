@@ -3,39 +3,19 @@
  * Template for /donate/ — WordPress auto-loads page-donate.php
  */
 get_header();
-$img_hero = wp_get_attachment_url(11);  // pt-hero.jpeg
 ?>
+
 
 <div class="donate-page">
 
-  <!-- ── 1. HERO ─────────────────────────────────────────────── -->
-  <section class="donate-hero">
-    <?php if ($img_hero) : ?>
-      <div class="donate-hero-bg">
-        <img src="<?php echo esc_url($img_hero); ?>" alt="" loading="eager">
-        <div class="donate-hero-overlay"></div>
-      </div>
-    <?php endif; ?>
-    <div class="donate-hero-content container">
-      <span class="donate-eyebrow">Make a difference</span>
-      <h1 class="donate-hero-title">Every dollar keeps<br>a kid on wheels.</h1>
-      <p class="donate-hero-sub">100% of programs are free to kids. Your donation makes that possible.</p>
-      <div class="donate-hero-trust">
-        <span class="trust-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          501(c)(3) Nonprofit
-        </span>
-        <span class="trust-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Tax Deductible
-        </span>
-        <span class="trust-badge">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          Secure Payment
-        </span>
-      </div>
+  <!-- ── 1. PAGE HEADER ──────────────────────────────────────── -->
+  <div class="page-archive-header">
+    <div class="container">
+      <span class="page-archive-eyebrow">Make a difference</span>
+      <h1 class="page-archive-title">Every dollar keeps<br>a kid on wheels.</h1>
+      <p class="page-archive-sub">100% of programs are free to kids. Your donation makes that possible.</p>
     </div>
-  </section>
+  </div>
 
   <!-- ── 2. FORM + IMPACT ──────────────────────────────────────── -->
   <section class="donate-main">
