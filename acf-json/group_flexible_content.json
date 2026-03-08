@@ -1,0 +1,561 @@
+{
+  "key": "group_pt_flexible_content",
+  "title": "Page Builder",
+  "fields": [
+    {
+      "key": "field_pt_page_sections",
+      "label": "Page Sections",
+      "name": "page_sections",
+      "type": "flexible_content",
+      "button_label": "+ Add Section",
+      "layouts": {
+        "layout_hero": {
+          "key": "layout_hero",
+          "name": "hero",
+          "label": "Hero \u2014 Full Width Photo + Text",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_hero_bg",
+              "label": "Background Image",
+              "name": "hero_bg",
+              "type": "image",
+              "return_format": "array",
+              "preview_size": "thumbnail"
+            },
+            {
+              "key": "field_hero_heading",
+              "label": "Heading",
+              "name": "hero_heading",
+              "type": "text",
+              "default_value": "We are Pushing Together",
+              "instructions": "Use <br> for line breaks"
+            },
+            {
+              "key": "field_hero_subtext",
+              "label": "Subtext",
+              "name": "hero_subtext",
+              "type": "textarea",
+              "rows": 3
+            },
+            {
+              "key": "field_hero_cta_label",
+              "label": "Primary CTA Label",
+              "name": "hero_cta_label",
+              "type": "text",
+              "default_value": "Learn More"
+            },
+            {
+              "key": "field_hero_cta_url",
+              "label": "Primary CTA URL",
+              "name": "hero_cta_url",
+              "type": "url"
+            },
+            {
+              "key": "field_hero_secondary_label",
+              "label": "Secondary CTA Label",
+              "name": "hero_secondary_label",
+              "type": "text",
+              "default_value": "Donate"
+            },
+            {
+              "key": "field_hero_secondary_url",
+              "label": "Secondary CTA URL",
+              "name": "hero_secondary_url",
+              "type": "url"
+            }
+          ]
+        },
+        "layout_mission": {
+          "key": "layout_mission",
+          "name": "mission",
+          "label": "Mission \u2014 Large Centered Text",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_mission_eyebrow",
+              "label": "Eyebrow (small text above)",
+              "name": "mission_eyebrow",
+              "type": "text"
+            },
+            {
+              "key": "field_mission_heading",
+              "label": "Heading",
+              "name": "mission_heading",
+              "type": "text",
+              "default_value": "Confidence on four wheels delivered straight to kids who need it most"
+            },
+            {
+              "key": "field_mission_accent_word",
+              "label": "Accent Word (highlight in purple)",
+              "name": "mission_accent_word",
+              "type": "text",
+              "default_value": "Confidence",
+              "instructions": "This word in the heading will be highlighted in purple"
+            },
+            {
+              "key": "field_mission_subtext",
+              "label": "Subtext",
+              "name": "mission_subtext",
+              "type": "textarea",
+              "rows": 3
+            },
+            {
+              "key": "field_mission_cta_label",
+              "label": "CTA Label (optional)",
+              "name": "mission_cta_label",
+              "type": "text"
+            },
+            {
+              "key": "field_mission_cta_url",
+              "label": "CTA URL (optional)",
+              "name": "mission_cta_url",
+              "type": "url"
+            }
+          ]
+        },
+        "layout_sponsors": {
+          "key": "layout_sponsors",
+          "name": "sponsors",
+          "label": "Sponsors Bar",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_sponsors_heading",
+              "label": "Heading",
+              "name": "sponsors_heading",
+              "type": "text",
+              "default_value": "Our Awesome Sponsors"
+            },
+            {
+              "key": "field_sponsors_accent",
+              "label": "Accent Word (highlighted in purple)",
+              "name": "sponsors_accent",
+              "type": "text",
+              "default_value": "Sponsors"
+            },
+            {
+              "key": "field_sponsors_list",
+              "label": "Sponsors",
+              "name": "sponsors_list",
+              "type": "repeater",
+              "button_label": "Add Sponsor",
+              "sub_fields": [
+                {
+                  "key": "field_sponsor_logo",
+                  "label": "Logo",
+                  "name": "sponsor_logo",
+                  "type": "image",
+                  "return_format": "array",
+                  "preview_size": "thumbnail"
+                },
+                {
+                  "key": "field_sponsor_name",
+                  "label": "Name",
+                  "name": "sponsor_name",
+                  "type": "text"
+                },
+                {
+                  "key": "field_sponsor_url",
+                  "label": "Website URL",
+                  "name": "sponsor_url",
+                  "type": "url"
+                }
+              ]
+            }
+          ]
+        },
+        "layout_full_photo": {
+          "key": "layout_full_photo",
+          "name": "full_photo",
+          "label": "Full Width Photo",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_fullphoto_img",
+              "label": "Photo",
+              "name": "full_photo_image",
+              "type": "image",
+              "return_format": "array",
+              "preview_size": "thumbnail"
+            },
+            {
+              "key": "field_fullphoto_height",
+              "label": "Height (CSS value, e.g. 500px or 60vh)",
+              "name": "full_photo_height",
+              "type": "text",
+              "default_value": "clamp(320px, 55vw, 580px)"
+            },
+            {
+              "key": "field_fullphoto_overlay",
+              "label": "Dark overlay?",
+              "name": "full_photo_overlay",
+              "type": "true_false",
+              "default_value": 0
+            },
+            {
+              "key": "field_fullphoto_text",
+              "label": "Overlay Text (optional)",
+              "name": "full_photo_text",
+              "type": "text"
+            }
+          ]
+        },
+        "layout_text_block": {
+          "key": "layout_text_block",
+          "name": "text_block",
+          "label": "Text Block (About / Content)",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_text_heading",
+              "label": "Heading",
+              "name": "text_heading",
+              "type": "text"
+            },
+            {
+              "key": "field_text_content",
+              "label": "Content",
+              "name": "text_content",
+              "type": "wysiwyg",
+              "toolbar": "full",
+              "media_upload": 1
+            },
+            {
+              "key": "field_text_bg",
+              "label": "Background",
+              "name": "text_bg",
+              "type": "select",
+              "choices": {
+                "white": "White",
+                "light": "Light Gray",
+                "dark": "Dark / Black",
+                "purple": "Purple"
+              },
+              "default_value": "white"
+            },
+            {
+              "key": "field_text_align",
+              "label": "Text Alignment",
+              "name": "text_align",
+              "type": "select",
+              "choices": {
+                "left": "Left",
+                "center": "Center"
+              },
+              "default_value": "left"
+            },
+            {
+              "key": "field_text_cta_label",
+              "label": "CTA Label (optional)",
+              "name": "text_cta_label",
+              "type": "text"
+            },
+            {
+              "key": "field_text_cta_url",
+              "label": "CTA URL (optional)",
+              "name": "text_cta_url",
+              "type": "url"
+            }
+          ]
+        },
+        "layout_two_col": {
+          "key": "layout_two_col",
+          "name": "two_col",
+          "label": "Two Column \u2014 Text + Image",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_twocol_heading",
+              "label": "Heading",
+              "name": "twocol_heading",
+              "type": "text"
+            },
+            {
+              "key": "field_twocol_content",
+              "label": "Content",
+              "name": "twocol_content",
+              "type": "wysiwyg",
+              "toolbar": "basic"
+            },
+            {
+              "key": "field_twocol_image",
+              "label": "Image",
+              "name": "twocol_image",
+              "type": "image",
+              "return_format": "array",
+              "preview_size": "thumbnail"
+            },
+            {
+              "key": "field_twocol_image_side",
+              "label": "Image Side",
+              "name": "twocol_image_side",
+              "type": "select",
+              "choices": {
+                "right": "Right",
+                "left": "Left"
+              },
+              "default_value": "right"
+            },
+            {
+              "key": "field_twocol_cta_label",
+              "label": "CTA Label",
+              "name": "twocol_cta_label",
+              "type": "text"
+            },
+            {
+              "key": "field_twocol_cta_url",
+              "label": "CTA URL",
+              "name": "twocol_cta_url",
+              "type": "url"
+            }
+          ]
+        },
+        "layout_stats": {
+          "key": "layout_stats",
+          "name": "stats",
+          "label": "Stats / Impact Numbers",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_stats_heading",
+              "label": "Heading (optional)",
+              "name": "stats_heading",
+              "type": "text"
+            },
+            {
+              "key": "field_stats_bg",
+              "label": "Background",
+              "name": "stats_bg",
+              "type": "select",
+              "choices": {
+                "dark": "Dark",
+                "purple": "Purple",
+                "white": "White"
+              },
+              "default_value": "dark"
+            },
+            {
+              "key": "field_stats_items",
+              "label": "Stats",
+              "name": "stats_items",
+              "type": "repeater",
+              "min": 1,
+              "max": 6,
+              "button_label": "Add Stat",
+              "sub_fields": [
+                {
+                  "key": "field_stat_number",
+                  "label": "Number / Value",
+                  "name": "stat_number",
+                  "type": "text",
+                  "placeholder": "500+"
+                },
+                {
+                  "key": "field_stat_label",
+                  "label": "Label",
+                  "name": "stat_label",
+                  "type": "text",
+                  "placeholder": "Kids Served"
+                }
+              ]
+            }
+          ]
+        },
+        "layout_newsletter": {
+          "key": "layout_newsletter",
+          "name": "newsletter",
+          "label": "Newsletter Signup",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_newsletter_heading",
+              "label": "Heading",
+              "name": "newsletter_heading",
+              "type": "text",
+              "default_value": "Join Our Newsletter"
+            },
+            {
+              "key": "field_newsletter_accent",
+              "label": "Accent Word",
+              "name": "newsletter_accent",
+              "type": "text",
+              "default_value": "Newsletter"
+            },
+            {
+              "key": "field_newsletter_subtext",
+              "label": "Subtext",
+              "name": "newsletter_subtext",
+              "type": "text",
+              "default_value": "Stay up to date with events, stories, and ways to support."
+            },
+            {
+              "key": "field_newsletter_shortcode",
+              "label": "Form Shortcode (WPForms / Gravity Forms etc.)",
+              "name": "newsletter_shortcode",
+              "type": "text",
+              "instructions": "Paste shortcode here, e.g. [wpforms id=\"1\"]"
+            }
+          ]
+        },
+        "layout_photo_grid": {
+          "key": "layout_photo_grid",
+          "name": "photo_grid",
+          "label": "Photo Grid (Instagram / Journey)",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_grid_heading",
+              "label": "Heading",
+              "name": "grid_heading",
+              "type": "text",
+              "default_value": "Follow the Journey"
+            },
+            {
+              "key": "field_grid_accent",
+              "label": "Accent Word",
+              "name": "grid_accent",
+              "type": "text",
+              "default_value": "Journey"
+            },
+            {
+              "key": "field_grid_handle",
+              "label": "Instagram Handle (e.g. @pushingtogether)",
+              "name": "grid_handle",
+              "type": "text"
+            },
+            {
+              "key": "field_grid_url",
+              "label": "Instagram / Social URL",
+              "name": "grid_url",
+              "type": "url"
+            },
+            {
+              "key": "field_grid_photos",
+              "label": "Photos",
+              "name": "grid_photos",
+              "type": "gallery",
+              "return_format": "array",
+              "min": 0,
+              "max": 6,
+              "instructions": "Upload 4-6 photos for the grid",
+              "preview_size": "thumbnail"
+            }
+          ]
+        },
+        "layout_cta_banner": {
+          "key": "layout_cta_banner",
+          "name": "cta_banner",
+          "label": "CTA Banner",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_cta_heading",
+              "label": "Heading",
+              "name": "cta_heading",
+              "type": "text",
+              "default_value": "Ready to make a difference?"
+            },
+            {
+              "key": "field_cta_subtext",
+              "label": "Subtext",
+              "name": "cta_subtext",
+              "type": "text"
+            },
+            {
+              "key": "field_cta_btn_label",
+              "label": "Button Label",
+              "name": "cta_btn_label",
+              "type": "text",
+              "default_value": "Donate Now"
+            },
+            {
+              "key": "field_cta_btn_url",
+              "label": "Button URL",
+              "name": "cta_btn_url",
+              "type": "url"
+            },
+            {
+              "key": "field_cta_bg",
+              "label": "Background",
+              "name": "cta_bg",
+              "type": "select",
+              "choices": {
+                "purple": "Purple",
+                "dark": "Dark",
+                "white": "White"
+              },
+              "default_value": "purple"
+            }
+          ]
+        },
+        "layout_events": {
+          "key": "layout_events",
+          "name": "events",
+          "label": "Upcoming Events",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_events_heading",
+              "label": "Heading",
+              "name": "events_heading",
+              "type": "text",
+              "default_value": "Upcoming Events"
+            },
+            {
+              "key": "field_events_count",
+              "label": "Number of events to show",
+              "name": "events_count",
+              "type": "number",
+              "default_value": 3
+            }
+          ]
+        },
+        "layout_video": {
+          "key": "layout_video",
+          "name": "video",
+          "label": "Video Embed",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_video_heading",
+              "label": "Heading (optional)",
+              "name": "video_heading",
+              "type": "text"
+            },
+            {
+              "key": "field_video_url",
+              "label": "YouTube / Vimeo URL",
+              "name": "video_url",
+              "type": "url"
+            },
+            {
+              "key": "field_video_bg",
+              "label": "Background",
+              "name": "video_bg",
+              "type": "select",
+              "choices": {
+                "white": "White",
+                "dark": "Dark",
+                "light": "Light Gray"
+              },
+              "default_value": "white"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "style": "seamless",
+  "label_placement": "top",
+  "active": true
+}

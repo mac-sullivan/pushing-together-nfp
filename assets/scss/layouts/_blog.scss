@@ -1,0 +1,278 @@
+@use '../abstracts' as *;
+
+// ─── Blog archive ─────────────────────────────────────────────
+@keyframes blog-header-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes blog-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.blog-archive-header {
+  background: #0a0a0a;
+  margin: calc(51px + 2rem) 1.5rem 0;
+  border-radius: 20px;
+  padding: 5rem 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 600px;
+    background: radial-gradient(circle, rgba($purple, 0.2) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  animation: blog-header-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  .container { position: relative; z-index: 1; max-width: $max-width; }
+
+  @include mobile { margin: calc(51px + 1rem) 0.75rem 0; }
+}
+
+.blog-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: $purple-light;
+  margin-bottom: 1.25rem;
+  animation: blog-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: $purple-light;
+    flex-shrink: 0;
+  }
+}
+
+.blog-archive-title {
+  font-family: $font-heading;
+  font-size: clamp(2.5rem, 5vw, 5.5rem);
+  font-weight: 800;
+  color: $white;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  margin: 0 0 1rem;
+  animation: blog-fade-up 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.blog-archive-sub {
+  font-size: clamp(0.9rem, 1.3vw, 1rem);
+  color: rgba($white, 0.52);
+  max-width: 44ch;
+  line-height: 1.75;
+  animation: blog-fade-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+// ─── Blog archive body ────────────────────────────────────────
+.blog-archive-body {
+  background: $white;
+  padding: 4rem 0 6rem;
+
+  .container { max-width: $max-width; }
+}
+
+// ─── Post grid ────────────────────────────────────────────────
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+
+  @include tablet { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+// ─── Blog card ────────────────────────────────────────────────
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  background: $white;
+  border: 1.5px solid #ebe9e5;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(#000, 0.1);
+    border-color: rgba($purple, 0.25);
+  }
+}
+
+.blog-card-img-link { display: block; }
+
+.blog-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #1a1a2e;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .blog-card:hover & img { transform: scale(1.04); }
+}
+
+.blog-card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a0a3e 0%, #0d0820 50%, #160635 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::after {
+    content: 'PUSHING TOGETHER';
+    font-family: $font-heading;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    color: rgba($purple-light, 0.35);
+    text-transform: uppercase;
+  }
+}
+
+.blog-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.blog-card-cat {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $purple;
+  font-family: $font-main;
+}
+
+.blog-card-title {
+  font-family: $font-heading;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0d0d0d;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0;
+
+  a {
+    color: inherit;
+    transition: color 0.2s ease;
+    &:hover { color: $purple; text-decoration: none; }
+  }
+}
+
+.blog-card-excerpt {
+  font-size: 0.88rem;
+  color: #6b6b6b;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px solid #eeeceb;
+  margin-top: auto;
+}
+
+.blog-card-date {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #aaa;
+  font-family: $font-main;
+}
+
+.blog-card-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: $purple;
+  font-family: $font-main;
+  transition: gap 0.2s ease;
+
+  &:hover { text-decoration: none; gap: 0.55rem; }
+
+  svg { flex-shrink: 0; }
+}
+
+// ─── Pagination ───────────────────────────────────────────────
+.blog-pagination {
+  margin-top: 2rem;
+  text-align: center;
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #6b6b6b;
+    border: 1.5px solid #e4e2de;
+    transition: all 0.2s ease;
+    font-family: $font-main;
+
+    &:hover { border-color: $purple; color: $purple; text-decoration: none; }
+
+    &.current {
+      background: $purple;
+      color: $white;
+      border-color: $purple;
+    }
+
+    &.prev, &.next {
+      width: auto;
+      padding: 0 1rem;
+      font-size: 0.82rem;
+    }
+  }
+}
+
+// ─── Empty state ──────────────────────────────────────────────
+.blog-empty {
+  text-align: center;
+  padding: 4rem 0;
+  color: #aaa;
+  font-style: italic;
+}

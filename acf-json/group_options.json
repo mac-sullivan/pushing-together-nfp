@@ -1,0 +1,37 @@
+{
+  "key": "group_pt_options",
+  "title": "Site Options",
+  "fields": [
+    {
+      "key": "field_pt_donate_url",
+      "label": "Donate Page URL",
+      "name": "donate_url",
+      "type": "url",
+      "instructions": "Link to your Stripe donation page"
+    },
+    {
+      "key": "field_pt_instagram_url",
+      "label": "Instagram URL",
+      "name": "instagram_url",
+      "type": "url"
+    },
+    {
+      "key": "field_pt_footer_tagline",
+      "label": "Footer Tagline",
+      "name": "footer_tagline",
+      "type": "text",
+      "default_value": "A skateboard 501(c)(3) supporting children and young adults in DeKalb, IL."
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "options_page",
+        "operator": "==",
+        "value": "acf-options"
+      }
+    ]
+  ],
+  "style": "default",
+  "active": true
+}

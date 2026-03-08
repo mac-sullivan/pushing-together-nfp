@@ -1,0 +1,51 @@
+// ─── Brand Colors ─────────────────────────────────────────────
+$purple:        #6B21E8;
+$purple-dark:   #5B17D0;
+$purple-light:  #8B45F5;
+$purple-glow:   rgba(107, 33, 232, 0.25);
+$black:         #080808;
+$white:         #FFFFFF;
+$off-white:     #F8F7F5;
+$gray-100:      #F2F1EF;
+$gray-200:      #E4E2DE;
+$gray-600:      #6B6B6B;
+$gray-800:      #2D2D2D;
+
+// ─── Gradients ────────────────────────────────────────────────
+$grad-purple:   linear-gradient(135deg, #6B21E8 0%, #8B45F5 100%);
+$grad-dark:     linear-gradient(180deg, #0d0d0d 0%, #1a0a30 100%);
+
+// ─── Spacing ──────────────────────────────────────────────────
+$nav-height:    80px;
+$radius:        16px;
+$radius-sm:     10px;
+$radius-lg:     24px;
+$max-width:     1268px;
+$section-pad:   clamp(5rem, 10vw, 9rem);
+
+// ─── Typography ───────────────────────────────────────────────
+$font-heading:  'Plus Jakarta Sans', sans-serif;
+$font-main:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+// ─── Transitions ──────────────────────────────────────────────
+$transition:       0.22s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow:  0.45s cubic-bezier(0.4, 0, 0.2, 1);
+
+// ─── CSS Custom Properties ────────────────────────────────────
+:root {
+  --purple:        #{$purple};
+  --purple-dark:   #{$purple-dark};
+  --purple-light:  #{$purple-light};
+  --black:         #{$black};
+  --white:         #{$white};
+  --off-white:     #{$off-white};
+  --gray-100:      #{$gray-100};
+  --gray-200:      #{$gray-200};
+  --gray-600:      #{$gray-600};
+  --gray-800:      #{$gray-800};
+  --radius:        #{$radius};
+  --radius-sm:     #{$radius-sm};
+  --max-width:     #{$max-width};
+  --font-heading:  #{$font-heading};
+  --font-main:     #{$font-main};
+}

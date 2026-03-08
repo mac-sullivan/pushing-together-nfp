@@ -1,0 +1,56 @@
+@use '../abstracts' as *;
+
+.section-mission {
+  background: $off-white;
+  padding: clamp(6rem, 12vw, 10rem) 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  // Subtle background decoration
+  &::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba($purple, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: $max-width;
+    position: relative;
+  }
+
+  .mission-heading {
+    font-family: $font-heading;
+    font-size: clamp(2.25rem, 5vw, 4.25rem);
+    font-weight: 800;
+    color: $black;
+    max-width: 860px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+
+    em {
+      font-style: normal;
+      background: $grad-purple;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .mission-subtext {
+    font-size: 1rem;
+    color: $gray-600;
+    max-width: 440px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+    font-family: $font-main;
+    letter-spacing: 0.04em;
+  }
+}

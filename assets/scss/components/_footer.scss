@@ -1,0 +1,200 @@
+@use '../abstracts' as *;
+
+// ─── Main footer body ─────────────────────────────────────────
+.footer-body {
+  background: #080808;
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0 0;
+
+  .container { max-width: $max-width; }
+}
+
+// ── Giant watermark wordmark ───────────────────────────────────
+.footer-wordmark {
+  position: absolute;
+  bottom: -0.1em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: $font-heading;
+  font-size: clamp(6rem, 12vw, 14rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba($white, 0.045);
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  z-index: 0;
+}
+
+// ── 4-column grid ─────────────────────────────────────────────
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.4fr;
+  gap: 3rem;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 4rem;
+
+  @include tablet { grid-template-columns: 1fr 1fr; }
+  @include mobile { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+// ─── Brand col ────────────────────────────────────────────────
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer-logo {
+  .pt-logo {
+    height: 30px; width: auto;
+    --logo-color: rgba(255,255,255,0.9);
+    mix-blend-mode: unset;
+  }
+}
+
+.footer-tagline {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba($white, 0.38);
+  margin: 0;
+  font-family: $font-main;
+  max-width: 22ch;
+}
+
+.footer-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba($white, 0.35);
+  font-family: $font-main;
+  margin-top: 0.25rem;
+
+  svg { flex-shrink: 0; opacity: 0.5; }
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba($white, 0.06);
+    border: 1px solid rgba($white, 0.08);
+    color: rgba($white, 0.45);
+    transition: all $transition;
+
+    &:hover {
+      background: $purple;
+      color: $white;
+      border-color: $purple;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba($purple, 0.4);
+      text-decoration: none;
+    }
+  }
+}
+
+// ─── Nav link cols ────────────────────────────────────────────
+.footer-links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  h4 {
+    font-family: $font-main;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba($white, 0.22);
+    margin: 0 0 0.6rem;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  a {
+    font-family: $font-main;
+    font-size: 0.9rem;
+    color: rgba($white, 0.5);
+    transition: color $transition;
+    &:hover { color: $white; text-decoration: none; }
+  }
+}
+
+// ─── Contact col ──────────────────────────────────────────────
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem !important;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.875rem;
+    color: rgba($white, 0.45);
+    font-family: $font-main;
+    line-height: 1.5;
+
+    svg { flex-shrink: 0; margin-top: 2px; color: $purple-light; opacity: 0.7; }
+
+    a { color: rgba($white, 0.5); &:hover { color: $white; text-decoration: none; } }
+  }
+}
+
+// ─── Divider ──────────────────────────────────────────────────
+.footer-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba($white, 0.08) 20%, rgba($white, 0.08) 80%, transparent);
+  position: relative;
+  z-index: 1;
+}
+
+// ─── Bottom bar ───────────────────────────────────────────────
+.footer-bottom {
+  background: #080808;
+  padding: 1.5rem 0;
+  position: relative;
+  z-index: 1;
+
+  .container { max-width: $max-width; }
+}
+
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  span {
+    font-family: $font-main;
+    font-size: 0.76rem;
+    color: rgba($white, 0.2);
+  }
+}
+
+// ─── Mobile overrides ─────────────────────────────────────────
+@include mobile {
+  .footer-bottom-inner { flex-direction: column; text-align: center; }
+  .footer-tagline { max-width: none; }
+}

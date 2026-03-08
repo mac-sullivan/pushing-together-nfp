@@ -1,0 +1,339 @@
+@use '../abstracts' as *;
+
+// ─── Hero — Daylight-inspired card layout ─────────────────────
+.section-hero {
+  width: 100%;
+  background: $off-white;
+  // top = nav offset (.25rem) + nav height (51px) + visible gap matching left/right (1.5rem)
+  padding: 51px 1.5rem 1.5rem;
+  box-sizing: border-box;
+    background: #0d0d0d;
+
+    // Subtle inner grain on the dark card
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+  }
+}
+
+.section-hero-inner {
+  border-radius: 20px; // all corners rounded now that there's top spacing
+  overflow: hidden;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+
+
+  // Radial purple glow behind image
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55%;
+    height: 70%;
+    background: radial-gradient(ellipse at center, rgba($purple, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// ─── Nav row inside the dark card — hidden (global header used) ──
+.hero-nav-row { display: none; }
+.hero-nav-row-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2.5rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+
+  // Nav links inside hero — white
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: rgba($white, 0.65);
+      transition: color $transition;
+      font-family: $font-main;
+
+      &:hover { color: $white; }
+    }
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    background: rgba($white, 0.08);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba($white, 0.12);
+    border-radius: 100px;
+    padding: 0.35rem 0.35rem 0.35rem 1.4rem;
+    gap: 0;
+    box-shadow: none;
+  }
+
+  .nav-donate { margin-left: 1rem; }
+
+  .nav-logo {
+    a { display: flex; align-items: center; text-decoration: none; }
+  }
+}
+
+// ─── Hero body — full bleed image with text overlay ───────────
+.hero-body {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0rem 0 7rem;
+  position: relative;
+}
+
+// ─── Text overlay ─────────────────────────────────────────────
+.hero-text {
+  max-width: 700px;
+  z-index: 2;
+  position: relative;
+  padding: 0 0rem; // matches container + hero card margin
+
+  // Stagger entrance — each child animates in after loader
+  & > * {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .hero-eyebrow { animation-delay: 0.55s; }
+  h1            { animation-delay: 0.7s;  }
+  p             { animation-delay: 0.85s; }
+  .hero-actions { animation-delay: 1.0s;  }
+}
+
+@keyframes hero-fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Hero image fades in
+.hero-image-wrap {
+  animation: hero-img-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+@keyframes hero-img-in {
+  from { opacity: 0; transform: scale(1.04); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+// Scroll indicator drifts in last
+.hero-scroll-indicator {
+  animation: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: $font-main;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba($white, 0.45);
+  margin-bottom: 1.75rem;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1.5px;
+    background: $purple-light;
+  }
+}
+
+.section-hero h1 {
+  font-family: $font-heading;
+  font-size: clamp(3rem, 5.5vw, 5.25rem);
+  font-weight: 800;
+  color: $white;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5rem;
+
+  em {
+    font-style: normal;
+    background: linear-gradient(135deg, $purple-light 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.section-hero p {
+  font-size: 1rem;
+  color: rgba($white, 0.6);
+  margin: 0 0 2.5rem;
+  max-width: 400px;
+  line-height: 1.75;
+  font-family: $font-main;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+
+// ─── Full-bleed background image ──────────────────────────────
+.hero-image-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+
+  &--placeholder {
+    width: 100%;
+    height: 100%;
+    background: #1a1a2e;
+  }
+}
+
+// Gradient overlay so text stays readable
+.hero-image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(#0d0d0d, 0.85) 0%,
+    rgba(#0d0d0d, 0.45) 50%,
+    rgba(#0d0d0d, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+// ─── Scroll indicator ─────────────────────────────────────────
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 5;
+  opacity: 0.4;
+  transition: opacity $transition;
+
+  &:hover { opacity: 0.8; }
+
+  span {
+    font-family: $font-main;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: $white;
+  }
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba($white, 0.6), transparent);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $purple-light;
+    animation: scroll-drip 2s ease-in-out infinite;
+  }
+}
+
+@keyframes scroll-drip {
+  0%   { top: -100%; opacity: 1; }
+  100% { top: 200%;  opacity: 0; }
+}
+
+// ─── Any page: nav floats over dark hero ──────────────────────
+#site-header.over-dark-hero .nav-right {
+
+
+  @media (min-width: 768px) {
+  background: rgba($white, 0.12);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.3), inset 0 0 0 1px rgba($white, 0.18);
+
+  .nav-links a {
+    color: rgba($white, 0.9);
+    &:hover { color: $white; }
+  }
+  }
+}
+
+// Once scrolled past the hero, revert to default light pill
+#site-header.scrolled .nav-right {
+    @media (min-width: 768px) {
+  background: rgba($white, 0.96);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.14), 0 1px 3px rgba(0,0,0,0.08);
+
+  .nav-links a {
+    color: $gray-800;
+    &:hover { color: $purple; }
+  }
+}
+}
+
+// Logo color handled by mix-blend-mode: exclusion in _nav.scss
+
+// ─── Mobile ───────────────────────────────────────────────────
+@include mobile {
+  .section-hero { padding: 0; }
+  .section-hero-inner { 
+    min-height: 92vh;
+}
+
+.marquee-strip {
+  min-height: 8vh;
+  padding: 0;
+  .marquee-inner {
+    height: 8vh;
+  }
+}
+  .hero-body { padding: 2.5rem 0 3rem; }
+}
+
+@include tablet {
+  .hero-body { padding: 3rem 0 4rem; }
+  .section-hero h1 { font-size: clamp(2.5rem, 5vw, 3.75rem); }
+}
