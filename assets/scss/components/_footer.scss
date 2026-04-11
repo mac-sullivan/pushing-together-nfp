@@ -72,7 +72,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.82rem;
-  color: rgba($white, 0.35);
+  color: rgba($white, 0.62);
   font-family: $font-main;
   margin-top: 0.25rem;
 
@@ -112,13 +112,13 @@
   flex-direction: column;
   gap: 0.6rem;
 
-  h4 {
+  h3 {
     font-family: $font-main;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba($white, 0.22);
+    color: rgba($white, 0.62);
     margin: 0 0 0.6rem;
   }
 
@@ -151,7 +151,7 @@
     align-items: flex-start;
     gap: 0.6rem;
     font-size: 0.875rem;
-    color: rgba($white, 0.45);
+    color: rgba($white, 0.62);
     font-family: $font-main;
     line-height: 1.5;
 
@@ -189,7 +189,7 @@
   span {
     font-family: $font-main;
     font-size: 0.76rem;
-    color: rgba($white, 0.2);
+    color: rgba($white, 0.62);
   }
 }
 

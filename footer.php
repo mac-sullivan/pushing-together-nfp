@@ -48,7 +48,7 @@ $tagline       = pt_field('footer_tagline', 'Building confidence and community t
 
       <!-- Col 2: Pages -->
       <div class="footer-links-col">
-        <h4>Navigate</h4>
+        <h3>Navigate</h3>
         <ul>
           <?php foreach (['Home' => '/', 'About' => '/about', 'Contact' => '/contact', 'Donate' => '/donate'] as $label => $path) : ?>
             <li><a href="<?php echo home_url($path); ?>"><?php echo $label; ?></a></li>
@@ -58,7 +58,7 @@ $tagline       = pt_field('footer_tagline', 'Building confidence and community t
 
       <!-- Col 3: Get Involved -->
       <div class="footer-links-col">
-        <h4>Get Involved</h4>
+        <h3>Get Involved</h3>
         <ul>
           <li><a href="<?php echo esc_url($donate_url); ?>">Donate</a></li>
           <li><a href="<?php echo home_url('/contact'); ?>">Volunteer</a></li>
@@ -69,7 +69,7 @@ $tagline       = pt_field('footer_tagline', 'Building confidence and community t
 
       <!-- Col 4: Legal Docs -->
       <div class="footer-links-col">
-        <h4>Legal</h4>
+        <h3>Legal</h3>
         <ul>
           <li><a href="<?php echo esc_url(home_url('/wp-content/uploads/2026/04/501c3p2-one.png')); ?>" target="_blank" rel="noopener">501c3p2 (1)</a></li>
           <li><a href="<?php echo esc_url(home_url('/wp-content/uploads/2026/04/501c3p2-two.png')); ?>" target="_blank" rel="noopener">501c3p2 (2)</a></li>
@@ -79,7 +79,7 @@ $tagline       = pt_field('footer_tagline', 'Building confidence and community t
 
       <!-- Col 5: Contact -->
       <div class="footer-links-col footer-contact-col">
-        <h4>Contact</h4>
+        <h3>Contact</h3>
         <ul class="footer-contact-list">
           <li>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>

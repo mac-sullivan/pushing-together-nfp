@@ -2,7 +2,7 @@
 $bg       = get_sub_field('hero_bg');
 $heading  = get_sub_field('hero_heading') ?: 'We are<br>Pushing Together';
 $subtext  = get_sub_field('hero_subtext') ?: 'A skateboard 501(c)(3) not for profit supporting children and young adults in DeKalb, IL and surrounding communities.';
-$cta1_l   = get_sub_field('hero_cta_label') ?: 'Learn More';
+$cta1_l   = get_sub_field('hero_cta_label') ?: 'About Pushing Together';
 $cta1_url = get_sub_field('hero_cta_url') ?: home_url('/about');
 $cta2_l   = get_sub_field('hero_secondary_label') ?: 'Donate';
 $cta2_url = get_sub_field('hero_secondary_url') ?: home_url('/donate');
@@ -11,7 +11,7 @@ $cta2_url = get_sub_field('hero_secondary_url') ?: home_url('/donate');
   <!-- Right: image as design element -->
   <div class="hero-image-wrap">
     <?php if ($bg) : ?>
-      <img src="<?php echo esc_url($bg['url']); ?>" alt="<?php echo esc_attr($bg['alt']); ?>" class="hero-img" loading="eager">
+      <img src="<?php echo esc_url($bg['url']); ?>" alt="<?php echo esc_attr($bg['alt']); ?>" class="hero-img" loading="eager" fetchpriority="high">
     <?php else : ?>
       <div class="hero-img hero-img--placeholder"></div>
     <?php endif; ?>

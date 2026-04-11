@@ -169,7 +169,12 @@ body.page-contact #site-header .nav-toggle span { background: $gray-800; }
     color: $purple;
   }
 
-  // Sliding underline
+}
+
+// Sliding underline (sibling of .nav-links, inside the nav container)
+.nav-links-desktop {
+  position: relative;
+
   .nav-underline {
     position: absolute;
     bottom: 3px;

@@ -24,7 +24,7 @@ $events  = get_posts(['post_type'=>'pt_event','numberposts'=>$count,'orderby'=>'
               <h3><a href="<?php echo esc_url($link); ?>"><?php echo esc_html($event->post_title); ?></a></h3>
               <?php if ($location) : ?><p class="event-location"><?php echo esc_html($location); ?></p><?php endif; ?>
               <p><?php echo esc_html(get_the_excerpt($event)); ?></p>
-              <a href="<?php echo esc_url($link); ?>" class="btn btn-primary">Learn More</a>
+              <a href="<?php echo esc_url($link); ?>" class="btn btn-primary">View event details</a>
             </div>
           </article>
         <?php endforeach; ?>

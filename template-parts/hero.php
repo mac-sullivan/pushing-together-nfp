@@ -2,7 +2,7 @@
 $hero_image   = pt_field( 'hero_image' );
 $hero_heading = pt_field( 'hero_heading', 'We are<br>Pushing Together' );
 $hero_sub     = pt_field( 'hero_subtext', 'A skateboard 501(c)(3) not for profit supporting children and young adults in DeKalb, IL and surrounding communities.' );
-$cta_label    = pt_field( 'hero_cta_label', 'Learn More' );
+$cta_label    = pt_field( 'hero_cta_label', 'About Pushing Together' );
 $cta_url      = pt_field( 'hero_cta_url', home_url('/about') );
 $donate_url   = pt_field( 'donate_url', home_url('/donate'), 'option' );
 ?>
@@ -12,7 +12,8 @@ $donate_url   = pt_field( 'donate_url', home_url('/donate'), 'option' );
     <img class="hero-bg"
          src="<?php echo esc_url( $hero_image['url'] ); ?>"
          alt="<?php echo esc_attr( $hero_image['alt'] ); ?>"
-         loading="eager">
+         loading="eager"
+         fetchpriority="high">
   <?php else : ?>
     <!-- Placeholder — replace via ACF in WP Admin -->
     <div class="hero-bg" style="background: #1a1a2e;"></div>

@@ -213,15 +213,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const bar = document.createElement('span');
   bar.className = 'nav-underline';
-  navList.appendChild(bar);
+  // Append to the nav container (not inside the ul) for valid HTML
+  navList.parentElement.appendChild(bar);
 
   const links = Array.from(navList.querySelectorAll('li > a'));
 
+  const barParent = navList.parentElement;
   function barRect(el) {
-    const listRect = navList.getBoundingClientRect();
-    const rect     = el.getBoundingClientRect();
-    const pad      = 12;
-    return { left: rect.left - listRect.left + pad, width: rect.width - pad * 2 };
+    const parentRect = barParent.getBoundingClientRect();
+    const rect       = el.getBoundingClientRect();
+    const pad        = 12;
+    return { left: rect.left - parentRect.left + pad, width: rect.width - pad * 2 };
   }
 
   function setBar(el, instant) {
