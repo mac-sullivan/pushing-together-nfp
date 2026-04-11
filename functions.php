@@ -262,6 +262,12 @@ function pt_newsletter_subscribe() {
     wp_send_json_success( [ 'message' => "You're in! Welcome to the community. 🛹" ] );
 }
 
+// ── Favicon ───────────────────────────────────────────────────
+add_action( 'wp_head', function () {
+    $favicon = get_stylesheet_directory_uri() . '/assets/images/favicon.svg';
+    echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( $favicon ) . '">' . "\n";
+} );
+
 // ── Contact form AJAX ─────────────────────────────────────────
 add_action('wp_ajax_pt_contact_submit',        'pt_contact_submit');
 add_action('wp_ajax_nopriv_pt_contact_submit', 'pt_contact_submit');
@@ -278,4 +284,10 @@ function pt_contact_submit() {
     $body = "Name: $name\nEmail: $email\nSubject: $subject\n\nMessage:\n$message";
     wp_mail(get_option('admin_email'), "Contact Form: $subject", $body, ["Reply-To: $name <$email>"]);
     wp_send_json_success(['message' => "Thanks $name! We'll get back to you within 1–2 business days. 🤙"]);
+}
+
+// ── Local dev: bypass GiveWP HTTPS check for Stripe ──────────
+// REMOVE THIS before going live (or it auto-disables on HTTPS)
+if ( defined('WP_LOCAL_DEV') || strpos($_SERVER['HTTP_HOST'] ?? '', '.local') !== false ) {
+    add_filter('give_is_ssl', '__return_true');
 }

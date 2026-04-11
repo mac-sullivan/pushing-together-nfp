@@ -142,7 +142,11 @@
 
 // Scroll indicator drifts in last
 .hero-scroll-indicator {
+  display: none !important;
   animation: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+  @media (min-width: 768px) {
+    display: block !important;
+  }
 }
 
 .hero-eyebrow {

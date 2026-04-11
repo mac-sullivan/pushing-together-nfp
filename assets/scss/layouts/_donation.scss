@@ -288,6 +288,11 @@ button.give-btn:not(.give-submit):not(#give-purchase-button) {
   display: flex !important;
   flex-direction: column !important;
   gap: 0.75rem !important;
+
+  // Spinner inline with button
+  .give-loading-animation {
+    display: none !important; // hide the standalone spinner below button
+  }
 }
 
 #give-purchase-button.give-submit {

@@ -40,9 +40,9 @@ $tagline       = pt_field('footer_tagline', 'Building confidence and community t
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
           <?php endif; ?>
-          <a href="#" aria-label="TikTok">
+          <!-- <a href="#" aria-label="TikTok">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.83a8.18 8.18 0 004.78 1.52V6.9a4.85 4.85 0 01-1.01-.21z"/></svg>
-          </a>
+          </a> -->
         </div>
       </div>
 
@@ -67,7 +67,17 @@ $tagline       = pt_field('footer_tagline', 'Building confidence and community t
         </ul>
       </div>
 
-      <!-- Col 4: Contact -->
+      <!-- Col 4: Legal Docs -->
+      <div class="footer-links-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="<?php echo esc_url(home_url('/wp-content/uploads/2026/04/501c3p2-one.png')); ?>" target="_blank" rel="noopener">501c3p2 (1)</a></li>
+          <li><a href="<?php echo esc_url(home_url('/wp-content/uploads/2026/04/501c3p2-two.png')); ?>" target="_blank" rel="noopener">501c3p2 (2)</a></li>
+          <li><a href="<?php echo esc_url(home_url('/wp-content/uploads/2026/04/ein.png')); ?>" target="_blank" rel="noopener">EIN</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Contact -->
       <div class="footer-links-col footer-contact-col">
         <h4>Contact</h4>
         <ul class="footer-contact-list">
@@ -97,7 +107,7 @@ $tagline       = pt_field('footer_tagline', 'Building confidence and community t
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <span>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. All rights reserved.</span>
-      <span class="footer-501">EIN: 00-0000000 · 501(c)(3) Non-Profit Organization</span>
+      <span class="footer-501">EIN: 85-1460885 · 501(c)(3) Non-Profit Organization</span>
     </div>
   </div>
 

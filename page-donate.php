@@ -21,6 +21,14 @@ get_header();
   <section class="donate-main">
     <div class="container donate-main-grid">
 
+          <!-- Right: Form -->
+      <div class="donate-form-col reveal-right">
+        <div class="donate-form-card">
+          <h3>Choose an amount</h3>
+          <?php echo do_shortcode('[give_form id="162"]'); ?>
+        </div>
+      </div>
+
       <!-- Left: Impact context -->
       <div class="donate-impact reveal-left">
         <span class="section-eyebrow donate-section-eyebrow">Your impact</span>
@@ -60,13 +68,7 @@ get_header();
         <p class="donate-legal">Pushing Together NFP is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible. EIN: 00-0000000.</p>
       </div>
 
-      <!-- Right: Form -->
-      <div class="donate-form-col reveal-right">
-        <div class="donate-form-card">
-          <h3>Choose an amount</h3>
-          <?php echo do_shortcode('[give_form id="162"]'); ?>
-        </div>
-      </div>
+
 
     </div>
   </section>

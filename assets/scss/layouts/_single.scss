@@ -17,9 +17,11 @@
   overflow: hidden;
   animation: single-card-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
   margin: 0;
+  border-radius: 0;
   @media (min-width: 768px) {
-    margin: calc(51px + 2rem) 1.5rem 0;
     border-radius: 20px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 
   // Glow when no image
@@ -43,10 +45,11 @@
     align-items: flex-end;
     padding: 0;
 
-    .single-hero-content { padding-bottom: 4rem; }
+    .single-hero-content { 
+      padding: 3rem 1.5rem;
+     }
   }
 
-  @include mobile { margin: calc(51px + 1rem) 0.75rem 0; }
 }
 
 .single-hero-img-wrap {

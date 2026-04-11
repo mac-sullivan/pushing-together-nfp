@@ -4,9 +4,9 @@
 $glass-light: rgba($white, 0.82);
 $glass-border: rgba($white, 0.18);
 $glass-shadow: 0 4px 24px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.06), inset 0 0 0 1px rgba($white,0.75);
-$glass-dark: rgba($white, 0.10);
-$glass-dark-border: rgba($white, 0.16);
-$glass-dark-shadow: 0 2px 24px rgba(0,0,0,0.35);
+$glass-dark: rgba(0, 0, 0, 0.35);
+$glass-dark-border: rgba($white, 0.12);
+$glass-dark-shadow: 0 2px 24px rgba(0,0,0,0.4);
 
 // ─── Site header wrapper ──────────────────────────────────────
 #site-header {
@@ -42,8 +42,8 @@ $glass-dark-shadow: 0 2px 24px rgba(0,0,0,0.35);
     height: 51px;
     box-sizing: border-box;
     box-shadow: $glass-dark-shadow;
-    backdrop-filter: blur(16px) saturate(1.6);
-    -webkit-backdrop-filter: blur(16px) saturate(1.6);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
     transition: background $transition, border-color $transition, box-shadow $transition;
   }
 
@@ -91,8 +91,8 @@ $glass-dark-shadow: 0 2px 24px rgba(0,0,0,0.35);
   // Start dark glass — no white flash
   background: $glass-dark;
   border: 1px solid $glass-dark-border;
-  backdrop-filter: blur(16px) saturate(1.6);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
   border-radius: 100px;
   padding: 0.6rem 0.4rem 0.6rem 1rem;
   height: 51px;
@@ -146,15 +146,16 @@ body.page-contact #site-header .nav-toggle span { background: $gray-800; }
     padding: 0.35rem 0.75rem;
     border-radius: 100px;
     display: block;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
     // Start white (works on dark glass)
-    color: rgba($white, 0.8);
+    color: rgba($white, 0.9);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
   }
 
   a:hover { color: $white; }
 
-  // Scrolled: dark links
-  #site-header.scrolled & a { color: $gray-800; }
+  // Scrolled: dark links, no shadow needed
+  #site-header.scrolled & a { color: $gray-800; text-shadow: none; }
   #site-header.scrolled & a:hover { color: $purple; }
 
   li.current-menu-item > a,
@@ -242,8 +243,8 @@ body.page-contact #site-header .nav-toggle span { background: $gray-800; }
     top: 0.5rem;
     background: $glass-dark;
     border: 1px solid $glass-dark-border;
-    backdrop-filter: blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
+    backdrop-filter: blur(24px) saturate(1.8);
+    -webkit-backdrop-filter: blur(24px) saturate(1.8);
     border-radius: 20px;
     min-height: 54px;
     height: auto;
