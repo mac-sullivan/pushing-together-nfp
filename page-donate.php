@@ -65,7 +65,7 @@ get_header();
           </div>
         </div>
 
-        <p class="donate-legal">Pushing Together NFP is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible. EIN: 00-0000000.</p>
+        <p class="donate-legal">Pushing Together NFP is a registered 501(c)(3) nonprofit organization. All donations are tax-deductible. EIN: 85-1460885.</p>
       </div>
 
 

@@ -35,7 +35,7 @@ $show_tiers = get_sub_field('donation_show_tiers') !== false;
         </div>
         <?php endif; ?>
 
-        <p class="donation-legal">Pushing Together NFP is a registered 501(c)(3) organization. All donations are tax-deductible. EIN: 88-XXXXXXX</p>
+        <p class="donation-legal">Pushing Together NFP is a registered 501(c)(3) organization. All donations are tax-deductible. EIN: 85-1460885</p>
       </div>
 
       <!-- Right: Give form -->

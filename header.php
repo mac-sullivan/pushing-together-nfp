@@ -36,7 +36,6 @@
       $nav_pages = [
         'Home'    => '/',
         'About'   => '/about',
-        'Blog'    => '/blog',
         'Contact' => '/contact',
       ];
       wp_nav_menu( [
