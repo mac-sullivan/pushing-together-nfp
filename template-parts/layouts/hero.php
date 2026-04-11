@@ -11,7 +11,7 @@ $cta2_url = get_sub_field('hero_secondary_url') ?: home_url('/donate');
   <!-- Right: image as design element -->
   <div class="hero-image-wrap">
     <?php if ($bg) : ?>
-      <img src="<?php echo esc_url($bg['url']); ?>" alt="<?php echo esc_attr($bg['alt']); ?>" class="hero-img" loading="eager" fetchpriority="high">
+      <img src="<?php echo esc_url($bg['url']); ?>" alt="<?php echo esc_attr($bg['alt']); ?>" class="hero-img skip-lazy" loading="eager" fetchpriority="high">
     <?php else : ?>
       <div class="hero-img hero-img--placeholder"></div>
     <?php endif; ?>

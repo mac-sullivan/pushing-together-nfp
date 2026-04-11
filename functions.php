@@ -270,14 +270,15 @@ add_action( 'wp_enqueue_scripts', function () {
     wp_dequeue_style( 'global-styles' );
     wp_dequeue_style( 'classic-theme-styles' );
     wp_dequeue_script( 'wp-embed' );
-    // Dequeue WooCommerce scripts/styles on non-WC pages
-    if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
-        wp_dequeue_style( 'woocommerce-general' );
-        wp_dequeue_style( 'woocommerce-layout' );
-        wp_dequeue_style( 'woocommerce-smallscreen' );
-        wp_dequeue_script( 'woocommerce' );
-        wp_dequeue_script( 'wc-cart-fragments' );
-    }
+    // WooCommerce CSS/JS — not needed on any page for this site
+    wp_dequeue_style( 'woocommerce-general' );
+    wp_dequeue_style( 'woocommerce-layout' );
+    wp_dequeue_style( 'woocommerce-smallscreen' );
+    wp_dequeue_style( 'wc-blocks-style' );
+    wp_dequeue_style( 'wc-blocks-vendors-style' );
+    wp_dequeue_script( 'woocommerce' );
+    wp_dequeue_script( 'wc-cart-fragments' );
+    wp_dequeue_script( 'wc-add-to-cart' );
 }, 100 );
 
 // Aggressively deregister block editor + React scripts on frontend
@@ -301,19 +302,34 @@ add_action( 'wp_enqueue_scripts', function () {
 // Load GiveWP Stripe scripts only on donate page
 add_action( 'wp_enqueue_scripts', function () {
     if ( ! is_page( 'donate' ) ) {
-        wp_dequeue_script( 'give-stripe' );
-        wp_dequeue_script( 'stripe-js' );
-        // Dequeue any give scripts that load stripe
+        // Kill all Stripe + GiveWP scripts on non-donate pages
+        $stripe_handles = [
+            'give-stripe-js', 'give-stripe-onpage-js', 'give-stripe',
+            'stripe-js', 'give-stripe-js-js', 'give-stripe-onpage-js-js',
+        ];
+        foreach ( $stripe_handles as $h ) {
+            wp_dequeue_script( $h );
+            wp_deregister_script( $h );
+        }
+        // Catch anything loading from stripe.com
         global $wp_scripts;
         if ( isset( $wp_scripts->registered ) ) {
             foreach ( $wp_scripts->registered as $handle => $script ) {
-                if ( strpos( $script->src, 'stripe.com' ) !== false ) {
+                if ( strpos( $script->src ?? '', 'stripe.com' ) !== false ) {
                     wp_dequeue_script( $handle );
+                    wp_deregister_script( $handle );
                 }
             }
         }
     }
-}, 99 );
+}, 999 );
+
+// Browser caching headers for static assets
+add_action( 'send_headers', function () {
+    if ( ! is_admin() ) {
+        header( 'Cache-Control: public, max-age=31536000, immutable', false );
+    }
+} );
 
 // Preload hero image for faster LCP
 add_action( 'wp_head', function () {
