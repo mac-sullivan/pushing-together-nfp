@@ -2,9 +2,9 @@
 $bg       = get_sub_field('hero_bg');
 $heading  = get_sub_field('hero_heading') ?: 'We are<br>Pushing Together';
 $subtext  = get_sub_field('hero_subtext') ?: 'A skateboard 501(c)(3) not for profit supporting children and young adults in DeKalb, IL and surrounding communities.';
-$cta1_l   = get_sub_field('hero_cta_label') ?: 'About Pushing Together';
+$cta1_l   = get_sub_field('hero_cta_label') ?: 'About Us';
 $cta1_url = get_sub_field('hero_cta_url') ?: home_url('/about');
-$cta2_l   = get_sub_field('hero_secondary_label') ?: 'Donate';
+$cta2_l   = get_sub_field('hero_secondary_label') ?: 'Donate Now';
 $cta2_url = get_sub_field('hero_secondary_url') ?: home_url('/donate');
 ?>
 <section class="section-hero">
@@ -28,8 +28,8 @@ $cta2_url = get_sub_field('hero_secondary_url') ?: home_url('/donate');
         <h1><?php echo wp_kses($heading, ['br' => [], 'em' => [], 'strong' => []]); ?></h1>
         <p><?php echo esc_html($subtext); ?></p>
         <div class="hero-actions">
-          <a href="<?php echo esc_url($cta1_url); ?>" class="btn btn-primary" aria-label="<?php echo esc_attr($cta1_l . ' about Pushing Together'); ?>"><?php echo esc_html($cta1_l); ?></a>
-          <a href="<?php echo esc_url($cta2_url); ?>" class="btn btn-ghost"><?php echo esc_html($cta2_l); ?></a>
+          <a href="<?php echo esc_url($cta2_url); ?>" class="btn btn-primary btn-donate-hero"><?php echo esc_html($cta2_l); ?></a>
+          <a href="<?php echo esc_url($cta1_url); ?>" class="btn btn-ghost" aria-label="<?php echo esc_attr($cta1_l . ' Pushing Together'); ?>"><?php echo esc_html($cta1_l); ?></a>
         </div>
       </div>
 

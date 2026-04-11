@@ -88,3 +88,17 @@
     }
   }
 }
+
+// Hero donate CTA — extra prominent
+.btn-donate-hero {
+  background: #f97316 !important; // warm orange — stands out against purple brand
+  box-shadow: 0 6px 28px rgba(249, 115, 22, 0.45) !important;
+  font-size: 1.05rem !important;
+  padding: 1rem 2.25rem !important;
+
+  &:hover {
+    background: #ea6c0a !important;
+    box-shadow: 0 10px 36px rgba(249, 115, 22, 0.55) !important;
+    transform: translateY(-2px);
+  }
+}
