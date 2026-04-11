@@ -122,11 +122,11 @@
   }
 }
 
-// White bg, purple text + border
+// White bg, purple text, no border
 .btn-white-purple {
   background: #fff !important;
   color: $purple !important;
-  border: 2px solid $purple !important;
+  border: none !important;
   box-shadow: none !important;
 
   &:hover {
