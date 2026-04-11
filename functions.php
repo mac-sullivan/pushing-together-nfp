@@ -296,8 +296,8 @@ add_action( 'wp_enqueue_scripts', function () {
     wp_script_add_data( 'jquery-migrate', 'group', 1 );
 }, 100 );
 
-// Aggressively deregister block editor + React scripts on frontend
-// WooCommerce pulls these in as deps — deregister entirely so nothing can re-enqueue
+// Deregister block editor + React scripts on frontend
+// Keep wp-polyfill, wp-hooks, wp-i18n, wp-dom-ready — GiveWP Stripe needs them
 add_action( 'wp_enqueue_scripts', function () {
     if ( is_admin() ) return;
     $kill = [
@@ -305,8 +305,6 @@ add_action( 'wp_enqueue_scripts', function () {
         'wp-editor', 'wp-format-library', 'wp-block-library',
         'react', 'react-dom', 'react-jsx-runtime',
         'wp-block-serialization-default-parser',
-        'wp-polyfill', 'wp-dom-ready', 'wp-hooks', 'wp-i18n',
-        'wp-primitives', 'wp-icons',
     ];
     foreach ( $kill as $handle ) {
         wp_dequeue_script( $handle );
