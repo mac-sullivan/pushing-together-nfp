@@ -59,10 +59,10 @@ $img_d         = wp_get_attachment_url(83);
       <div class="about-origin-text-col reveal-right">
         <span class="section-eyebrow">How it started</span>
         <h2 class="about-origin-heading">A borrowed ramp.<br>A parking lot.<br>A few kids.</h2>
-        <p>Founder Marcus Webb saw kids with energy, talent, and no outlet — and decided to do something about it. What began as informal Saturday sessions grew into structured programs, donated gear, and eventually a registered nonprofit serving kids ages 6–18 across three counties in northern Illinois.</p>
+        <p>It didn't start with a grant or a boardroom. It started with a community of skaters in DeKalb who kept seeing the same thing — kids with nowhere to go, no outlet, and no one showing up for them. So we showed up. With borrowed ramps, donated gear, and a parking lot on a Saturday afternoon. What grew out of those early sessions wasn't just a program — it was proof that a tight-knit skate community could become something bigger.</p>
         <blockquote class="about-pull-quote">
-          "Skateboarding gave me something to look forward to every week. We wanted every kid in DeKalb to have that feeling."
-          <cite>— Marcus Webb, Founder</cite>
+          "Skateboarding gave us something to look forward to every week. We wanted every kid in DeKalb to have that feeling."
+          <cite>— The Pushing Together Community</cite>
         </blockquote>
       </div>
     </div>
