@@ -89,16 +89,35 @@
   }
 }
 
-// Hero donate CTA — extra prominent
+// Hero donate CTA — prominent purple pill
 .btn-donate-hero {
-  background: #f97316 !important; // warm orange — stands out against purple brand
-  box-shadow: 0 6px 28px rgba(249, 115, 22, 0.45) !important;
   font-size: 1.05rem !important;
   padding: 1rem 2.25rem !important;
+  box-shadow: 0 8px 32px rgba($purple, 0.5) !important;
 
   &:hover {
-    background: #ea6c0a !important;
-    box-shadow: 0 10px 36px rgba(249, 115, 22, 0.55) !important;
+    box-shadow: 0 12px 40px rgba($purple, 0.65) !important;
     transform: translateY(-2px);
+  }
+}
+
+// Text link with arrow — used in hero for secondary CTA
+.btn-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(#fff, 0.85);
+  font-family: $font-main;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(#fff, 0.3);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+
+  &:hover {
+    color: #fff;
+    border-color: rgba(#fff, 0.7);
   }
 }

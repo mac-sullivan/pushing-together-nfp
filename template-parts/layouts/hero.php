@@ -29,7 +29,7 @@ $cta2_url = get_sub_field('hero_secondary_url') ?: home_url('/donate');
         <p><?php echo esc_html($subtext); ?></p>
         <div class="hero-actions">
           <a href="<?php echo esc_url($cta2_url); ?>" class="btn btn-primary btn-donate-hero"><?php echo esc_html($cta2_l); ?></a>
-          <a href="<?php echo esc_url($cta1_url); ?>" class="btn btn-ghost" aria-label="<?php echo esc_attr($cta1_l . ' Pushing Together'); ?>"><?php echo esc_html($cta1_l); ?></a>
+          <a href="<?php echo esc_url($cta1_url); ?>" class="btn-text-link" aria-label="<?php echo esc_attr($cta1_l . ' Pushing Together'); ?>"><?php echo esc_html($cta1_l); ?> →</a>
         </div>
       </div>
 
