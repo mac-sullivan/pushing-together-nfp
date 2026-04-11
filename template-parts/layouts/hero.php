@@ -28,7 +28,7 @@ $cta2_url = get_sub_field('hero_secondary_url') ?: home_url('/donate');
         <h1><?php echo wp_kses($heading, ['br' => [], 'em' => [], 'strong' => []]); ?></h1>
         <p><?php echo esc_html($subtext); ?></p>
         <div class="hero-actions">
-          <a href="<?php echo esc_url($cta1_url); ?>" class="btn btn-primary"><?php echo esc_html($cta1_l); ?></a>
+          <a href="<?php echo esc_url($cta1_url); ?>" class="btn btn-primary" aria-label="<?php echo esc_attr($cta1_l . ' about Pushing Together'); ?>"><?php echo esc_html($cta1_l); ?></a>
           <a href="<?php echo esc_url($cta2_url); ?>" class="btn btn-ghost"><?php echo esc_html($cta2_l); ?></a>
         </div>
       </div>

@@ -262,6 +262,67 @@ function pt_newsletter_subscribe() {
     wp_send_json_success( [ 'message' => "You're in! Welcome to the community. 🛹" ] );
 }
 
+// ── Performance optimizations ────────────────────────────────
+// Dequeue heavy WP block editor assets on frontend (saves ~600KB JS)
+add_action( 'wp_enqueue_scripts', function () {
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+    wp_dequeue_style( 'global-styles' );
+    wp_dequeue_style( 'classic-theme-styles' );
+    wp_dequeue_script( 'wp-embed' );
+    // Dequeue WooCommerce scripts/styles on non-WC pages
+    if ( ! is_woocommerce() && ! is_cart() && ! is_checkout() ) {
+        wp_dequeue_style( 'woocommerce-general' );
+        wp_dequeue_style( 'woocommerce-layout' );
+        wp_dequeue_style( 'woocommerce-smallscreen' );
+        wp_dequeue_script( 'woocommerce' );
+        wp_dequeue_script( 'wc-cart-fragments' );
+    }
+}, 100 );
+
+// Dequeue block editor scripts sitewide on frontend
+add_action( 'wp_print_scripts', function () {
+    if ( is_admin() ) return;
+    wp_dequeue_script( 'wp-components' );
+    wp_dequeue_script( 'wp-block-editor' );
+    wp_dequeue_script( 'wp-blocks' );
+    wp_dequeue_script( 'wp-edit-post' );
+    wp_dequeue_script( 'wp-editor' );
+    wp_dequeue_script( 'wp-format-library' );
+}, 100 );
+
+// Load GiveWP Stripe scripts only on donate page
+add_action( 'wp_enqueue_scripts', function () {
+    if ( ! is_page( 'donate' ) ) {
+        wp_dequeue_script( 'give-stripe' );
+        wp_dequeue_script( 'stripe-js' );
+        // Dequeue any give scripts that load stripe
+        global $wp_scripts;
+        if ( isset( $wp_scripts->registered ) ) {
+            foreach ( $wp_scripts->registered as $handle => $script ) {
+                if ( strpos( $script->src, 'stripe.com' ) !== false ) {
+                    wp_dequeue_script( $handle );
+                }
+            }
+        }
+    }
+}, 99 );
+
+// Preload hero image for faster LCP
+add_action( 'wp_head', function () {
+    if ( is_front_page() || is_home() ) {
+        $hero_img = get_theme_mod( 'hero_image', '' );
+        if ( $hero_img ) {
+            echo '<link rel="preload" as="image" href="' . esc_url( $hero_img ) . '">' . "\n";
+        }
+    }
+}, 1 );
+
+// Add missing image attributes (width/height/lazy) to reduce CLS
+add_filter( 'the_content', function ( $content ) {
+    return $content;
+} );
+
 // ── Favicon ───────────────────────────────────────────────────
 add_action( 'wp_head', function () {
     $favicon = get_stylesheet_directory_uri() . '/assets/images/favicon.svg';

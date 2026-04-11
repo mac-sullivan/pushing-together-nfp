@@ -35,7 +35,7 @@ $heading_html = str_ireplace(
             <div class="swiper-slide">
               <div class="photo-grid-item">
                 <?php if ($url) : ?><a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener"><?php endif; ?>
-                  <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt ?: 'Pushing Together'); ?>" loading="eager">
+                  <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt ?: 'Pushing Together'); ?>" loading="lazy" decoding="async">
                 <?php if ($url) : ?></a><?php endif; ?>
               </div>
             </div>

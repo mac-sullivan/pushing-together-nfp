@@ -11,6 +11,8 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<a class="skip-link screen-reader-text" href="#main-content">Skip to main content</a>
+
 <!-- Custom cursor -->
 <div class="c-cursor-dot" aria-hidden="true"></div>
 <div class="c-cursor-ring" aria-hidden="true"></div>
