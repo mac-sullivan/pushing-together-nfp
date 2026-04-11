@@ -286,8 +286,71 @@ function pt_contact_submit() {
     wp_send_json_success(['message' => "Thanks $name! We'll get back to you within 1–2 business days. 🤙"]);
 }
 
-// ── Local dev: bypass GiveWP HTTPS check for Stripe ──────────
-// REMOVE THIS before going live (or it auto-disables on HTTPS)
-if ( defined('WP_LOCAL_DEV') || strpos($_SERVER['HTTP_HOST'] ?? '', '.local') !== false ) {
-    add_filter('give_is_ssl', '__return_true');
+function pushing_together_schema() {
+    if ( !is_admin() ) {
+        echo '
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "NGO"],
+      "@id": "https://pushingtogethernfp.com/#organization",
+      "name": "Pushing Together",
+      "url": "https://pushingtogethernfp.com",
+      "logo": "https://pushingtogethernfp.com/wp-content/themes/blankslate-child/assets/images/pt-logo.svg",
+      "description": "A skateboard 501(c)(3) nonprofit supporting children and young adults in DeKalb, IL and surrounding communities through free skate lessons, donated equipment, and community programming.",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "DeKalb, Illinois"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "DeKalb",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Illinois"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Sycamore",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "Illinois"
+          }
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@pushingtogether.org",
+        "contactType": "general"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "DeKalb",
+        "addressRegion": "IL",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://instagram.com/pushingtogethernfp"
+      ],
+      "taxID": "85-1460885",
+      "nonprofitStatus": "Nonprofit501c3"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://pushingtogethernfp.com/#website",
+      "url": "https://pushingtogethernfp.com",
+      "name": "Pushing Together",
+      "publisher": {
+        "@id": "https://pushingtogethernfp.com/#organization"
+      }
+    }
+  ]
 }
+</script>';
+    }
+}
+add_action( 'wp_head', 'pushing_together_schema' );
