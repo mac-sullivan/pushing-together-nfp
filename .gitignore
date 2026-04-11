@@ -2,3 +2,14 @@ node_modules/
 .DS_Store
 assets/css/main.css.map
 .claude/
+MEMORY.md
+SOUL.md
+AGENTS.md
+USER.md
+TOOLS.md
+BOOTSTRAP.md
+HEARTBEAT.md
+IDENTITY.md
+.openclaw/
+.claude/
+memory/
