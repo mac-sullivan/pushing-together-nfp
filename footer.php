@@ -50,7 +50,7 @@ $tagline       = pt_field('footer_tagline', 'Building confidence and community t
       <div class="footer-links-col">
         <h4>Navigate</h4>
         <ul>
-          <?php foreach (['Home' => '/', 'About' => '/about', 'Blog' => '/blog', 'Contact' => '/contact', 'Donate' => '/donate'] as $label => $path) : ?>
+          <?php foreach (['Home' => '/', 'About' => '/about', 'Contact' => '/contact', 'Donate' => '/donate'] as $label => $path) : ?>
             <li><a href="<?php echo home_url($path); ?>"><?php echo $label; ?></a></li>
           <?php endforeach; ?>
         </ul>
