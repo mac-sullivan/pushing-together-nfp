@@ -280,16 +280,23 @@ add_action( 'wp_enqueue_scripts', function () {
     }
 }, 100 );
 
-// Dequeue block editor scripts sitewide on frontend
-add_action( 'wp_print_scripts', function () {
+// Aggressively deregister block editor + React scripts on frontend
+// WooCommerce pulls these in as deps — deregister entirely so nothing can re-enqueue
+add_action( 'wp_enqueue_scripts', function () {
     if ( is_admin() ) return;
-    wp_dequeue_script( 'wp-components' );
-    wp_dequeue_script( 'wp-block-editor' );
-    wp_dequeue_script( 'wp-blocks' );
-    wp_dequeue_script( 'wp-edit-post' );
-    wp_dequeue_script( 'wp-editor' );
-    wp_dequeue_script( 'wp-format-library' );
-}, 100 );
+    $kill = [
+        'wp-components', 'wp-block-editor', 'wp-blocks', 'wp-edit-post',
+        'wp-editor', 'wp-format-library', 'wp-block-library',
+        'react', 'react-dom', 'react-jsx-runtime',
+        'wp-block-serialization-default-parser',
+        'wp-polyfill', 'wp-dom-ready', 'wp-hooks', 'wp-i18n',
+        'wp-primitives', 'wp-icons',
+    ];
+    foreach ( $kill as $handle ) {
+        wp_dequeue_script( $handle );
+        wp_deregister_script( $handle );
+    }
+}, 999 );
 
 // Load GiveWP Stripe scripts only on donate page
 add_action( 'wp_enqueue_scripts', function () {
