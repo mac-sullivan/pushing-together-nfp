@@ -1,6 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home4/pushingsk8/public_html/wp-content/themes/blankslate-child/
-    - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -r . $DEPLOYPATH
+    - export DEPLOYPATH=/home4/pushingsk8/public_html/wp-content/themes/blankslate-child
+    - /bin/rsync -av --exclude='.git' --exclude='.cpanel.yml' --exclude='node_modules' . $DEPLOYPATH/
