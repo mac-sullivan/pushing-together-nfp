@@ -271,14 +271,29 @@ add_action( 'wp_enqueue_scripts', function () {
     wp_dequeue_style( 'classic-theme-styles' );
     wp_dequeue_script( 'wp-embed' );
     // WooCommerce CSS/JS — not needed on any page for this site
-    wp_dequeue_style( 'woocommerce-general' );
-    wp_dequeue_style( 'woocommerce-layout' );
-    wp_dequeue_style( 'woocommerce-smallscreen' );
-    wp_dequeue_style( 'wc-blocks-style' );
-    wp_dequeue_style( 'wc-blocks-vendors-style' );
+    $wc_styles = [
+        'woocommerce-general', 'woocommerce-layout', 'woocommerce-smallscreen',
+        'wc-blocks-style', 'wc-blocks-vendors-style', 'wc-blocks-style-css',
+        'woocommerce-inline', 'wc-block-vendors-style', 'wc-block-style',
+    ];
+    foreach ( $wc_styles as $s ) {
+        wp_dequeue_style( $s );
+        wp_deregister_style( $s );
+    }
     wp_dequeue_script( 'woocommerce' );
     wp_dequeue_script( 'wc-cart-fragments' );
     wp_dequeue_script( 'wc-add-to-cart' );
+
+    // GiveWP CSS — only needed on /donate
+    if ( ! is_page( 'donate' ) ) {
+        wp_dequeue_style( 'give-styles' );
+        wp_deregister_style( 'give-styles' );
+    }
+
+    // Move jQuery to footer (non-blocking)
+    wp_script_add_data( 'jquery', 'group', 1 );
+    wp_script_add_data( 'jquery-core', 'group', 1 );
+    wp_script_add_data( 'jquery-migrate', 'group', 1 );
 }, 100 );
 
 // Aggressively deregister block editor + React scripts on frontend
