@@ -1,6 +1,6 @@
 @use '../abstracts' as *;
 
-// ─── Video ────────────────────────────────────────────────────
+// ─── Video (oEmbed) ──────────────────────────────────────────
 .section-video {
   padding: clamp(4rem, 8vw, 7rem) 2rem;
 
@@ -33,6 +33,83 @@
       width: 100%;
       height: 100%;
       border: 0;
+    }
+  }
+}
+
+// ─── Video (self-hosted MP4) ─────────────────────────────────
+.section-video-local {
+  padding: clamp(4rem, 8vw, 7rem) 2rem;
+
+  &--white { background: $white; }
+  &--light { background: $gray-100; }
+
+  .container { max-width: $max-width; }
+
+  .video-local-eyebrow {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: $purple;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 800;
+    margin: 0 0 2rem;
+    text-align: center;
+    color: $black;
+  }
+
+  .video-wrap {
+    position: relative;
+    border-radius: $radius;
+    overflow: hidden;
+    background: #000;
+    cursor: pointer;
+
+    .video-poster {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .video-play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: transform $transition;
+
+      svg {
+        width: clamp(64px, 10vw, 100px);
+        height: clamp(64px, 10vw, 100px);
+        filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
+        transition: transform $transition;
+      }
+
+      &:hover svg {
+        transform: scale(1.1);
+      }
+    }
+
+    // Once playing, hide poster & button
+    &.is-playing {
+      .video-poster,
+      .video-play-btn {
+        display: none;
+      }
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
     }
   }
 }

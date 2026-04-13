@@ -2,10 +2,12 @@
 
 // ─── Sponsors / Become a Sponsor ──────────────────────────────
 .section-sponsors {
-  background: #f8f7f5;
   padding: clamp(5rem, 10vw, 8rem) 0;
   position: relative;
   overflow: hidden;
+
+  &--white { background: $white; }
+  &--light { background: $gray-100; }
 }
 
 .sponsors-bg-glow {

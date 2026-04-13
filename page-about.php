@@ -8,10 +8,6 @@ get_header();
 $img_community = wp_get_attachment_url(79);   // out-story-1-1.webp
 $img_hero      = wp_get_attachment_url(11);   // pt-hero.jpeg
 $img_class     = wp_get_attachment_url(173);  // slideshow-class-2.webp
-$img_a         = wp_get_attachment_url(80);
-$img_b         = wp_get_attachment_url(81);
-$img_c         = wp_get_attachment_url(82);
-$img_d         = wp_get_attachment_url(83);
 ?>
 
 <div class="about-page">
@@ -67,6 +63,13 @@ $img_d         = wp_get_attachment_url(83);
       </div>
     </div>
   </section>
+
+  <!-- ── VIDEO ─────────────────────────────────────────────────── -->
+  <?php get_template_part('template-parts/video-local', null, [
+    'eyebrow' => 'Check us out!',
+    'heading'  => 'This is what Pushing Together looks like.',
+    'bg'       => 'light',
+  ]); ?>
 
   <!-- ── 3. MISSION STATEMENT ─────────────────────────────────── -->
   <section class="about-mission">
@@ -140,18 +143,62 @@ $img_d         = wp_get_attachment_url(83);
     </div>
   </section>
 
-  <!-- ── 6. PHOTO WALL ──────────────────────────────────────────── -->
-  <section class="about-photos">
-    <div class="about-photos-grid">
-      <?php if ($img_a) : ?><div class="photo-cell"><img src="<?php echo esc_url($img_a); ?>" alt="" loading="lazy"></div><?php endif; ?>
-      <?php if ($img_b) : ?><div class="photo-cell photo-cell-tall"><img src="<?php echo esc_url($img_b); ?>" alt="" loading="lazy"></div><?php endif; ?>
-      <?php if ($img_c) : ?><div class="photo-cell"><img src="<?php echo esc_url($img_c); ?>" alt="" loading="lazy"></div><?php endif; ?>
-      <?php if ($img_d) : ?><div class="photo-cell"><img src="<?php echo esc_url($img_d); ?>" alt="" loading="lazy"></div><?php endif; ?>
-    </div>
-    <div class="about-photos-caption container">
-      <p>Sessions run every Saturday · DeKalb &amp; Sycamore, Illinois</p>
-    </div>
-  </section>
+  <!-- ── 6. PHOTO CAROUSEL (same as homepage) ────────────────────── -->
+  <?php
+  // Pull photo grid data from the front page's flexible content
+  $front_id = (int) get_option('page_on_front');
+  $photos   = [];
+  $grid_url = '';
+  $handle   = '';
+  if ($front_id && have_rows('page_sections', $front_id)) :
+    while (have_rows('page_sections', $front_id)) : the_row();
+      if (get_row_layout() === 'photo_grid') {
+        $photos   = get_sub_field('grid_photos') ?: [];
+        $handle   = get_sub_field('grid_handle') ?: '';
+        $grid_url = get_sub_field('grid_url') ?: '';
+        break;
+      }
+    endwhile;
+  endif;
+
+  if ($photos) : ?>
+    <section class="section-photo-grid">
+      <div class="container">
+        <div class="photo-grid-header">
+          <h2>Follow the <em>Journey</em></h2>
+          <?php if ($handle) : ?>
+            <a class="grid-handle" href="<?php echo esc_url($grid_url ?: '#'); ?>" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              <?php echo esc_html($handle); ?>
+            </a>
+          <?php endif; ?>
+        </div>
+        <div class="swiper photo-swiper">
+          <div class="swiper-wrapper">
+            <?php foreach ($photos as $photo) :
+              $img_url = is_array($photo) ? $photo['url'] : wp_get_attachment_url($photo);
+              $img_alt = is_array($photo) ? ($photo['alt'] ?: 'Pushing Together') : get_post_meta($photo, '_wp_attachment_image_alt', true);
+            ?>
+              <div class="swiper-slide">
+                <div class="photo-grid-item">
+                  <?php if ($grid_url) : ?><a href="<?php echo esc_url($grid_url); ?>" target="_blank" rel="noopener"><?php endif; ?>
+                    <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($img_alt ?: 'Pushing Together'); ?>" loading="lazy" decoding="async">
+                  <?php if ($grid_url) : ?></a><?php endif; ?>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+          <div class="swiper-button-prev photo-swiper-prev"></div>
+          <div class="swiper-button-next photo-swiper-next"></div>
+        </div>
+        <?php if ($grid_url) : ?>
+          <div class="photo-grid-cta">
+            <a href="<?php echo esc_url($grid_url); ?>" target="_blank" rel="noopener" class="btn btn-primary">Follow on Instagram</a>
+          </div>
+        <?php endif; ?>
+      </div>
+    </section>
+  <?php endif; ?>
 
   <!-- ── 7. GET INVOLVED CTA ────────────────────────────────────── -->
   <?php

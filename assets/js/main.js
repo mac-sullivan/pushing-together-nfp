@@ -193,6 +193,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ─── Video poster click-to-play ─────────────────────────────
+  document.querySelectorAll('.video-wrap[data-src]').forEach(wrap => {
+    wrap.addEventListener('click', () => {
+      if (wrap.classList.contains('is-playing')) return;
+      const video = document.createElement('video');
+      video.controls = true;
+      video.playsInline = true;
+      video.autoplay = true;
+      video.src = wrap.dataset.src;
+      wrap.appendChild(video);
+      wrap.classList.add('is-playing');
+    });
+  });
+
   // ─── Subtle hero parallax ──────────────────────────────────
   const heroBg = document.querySelector('.section-hero .hero-bg');
   if (heroBg) {

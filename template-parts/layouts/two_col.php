@@ -5,7 +5,8 @@ $image_id  = get_sub_field('twocol_image');
 $img_side  = get_sub_field('twocol_image_side') ?: 'right';
 $cta_label = get_sub_field('twocol_cta_label');
 $cta_url   = get_sub_field('twocol_cta_url');
-$bg        = get_sub_field('twocol_bg') ?: 'white';
+global $pt_force_bg;
+$bg        = $pt_force_bg ?: (get_sub_field('twocol_bg') ?: 'white');
 
 // Resolve image
 if (is_array($image_id)) {

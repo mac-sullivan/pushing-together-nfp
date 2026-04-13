@@ -22,7 +22,11 @@ $tiers = [
   ],
 ];
 ?>
-<section class="section-sponsors reveal">
+<?php
+global $pt_force_bg;
+$sponsors_bg = $pt_force_bg ?: 'white';
+?>
+<section class="section-sponsors section-sponsors--<?php echo esc_attr($sponsors_bg); ?> reveal">
   <div class="sponsors-bg-glow" aria-hidden="true"></div>
 
   <div class="container">

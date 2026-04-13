@@ -49,7 +49,7 @@
   // ─── Swiper overrides ─────────────────────────────────────
   .photo-swiper {
     overflow: hidden;
-    padding-bottom: 3rem;
+    padding-bottom: 0;
   }
 
   .swiper-slide {
@@ -95,16 +95,8 @@
     &:hover { background: $purple; color: $white; }
   }
 
-  // Swiper pagination
-  .swiper-pagination-bullet {
-    background: $gray-200;
-    opacity: 1;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-
-    &-active { background: $purple; }
-  }
+  // Hide pagination dots
+  .swiper-pagination { display: none; }
 
   .photo-grid-cta {
     margin-top: 2rem;

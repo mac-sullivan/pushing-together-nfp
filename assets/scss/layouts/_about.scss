@@ -106,8 +106,7 @@
   max-width: $max-width;
   width: 100%;
   margin: 0 auto;
-  padding: 4rem 0 4.5rem;
-  padding-top: 5rem;
+  padding: 5rem 2rem 4.5rem;
 
   @include mobile { padding: 3rem 1.5rem; }
 }
