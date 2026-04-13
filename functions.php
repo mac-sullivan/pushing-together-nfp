@@ -362,7 +362,6 @@ add_filter( 'the_content', function ( $content ) {
 // ── Favicon ───────────────────────────────────────────────────
 add_action( 'wp_head', function () {
     $dir = get_stylesheet_directory_uri() . '/assets/images';
-    echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( $dir . '/favicon.svg' ) . '">' . "\n";
     echo '<link rel="icon" type="image/png" sizes="512x512" href="' . esc_url( $dir . '/favicon.png' ) . '">' . "\n";
     echo '<link rel="apple-touch-icon" href="' . esc_url( $dir . '/favicon.png' ) . '">' . "\n";
 } );
