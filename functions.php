@@ -361,8 +361,14 @@ add_filter( 'the_content', function ( $content ) {
 
 // ── Favicon ───────────────────────────────────────────────────
 add_action( 'wp_head', function () {
-    $favicon = get_stylesheet_directory_uri() . '/assets/images/favicon.svg';
-    echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( $favicon ) . '">' . "\n";
+    $dir = get_stylesheet_directory_uri() . '/assets/images';
+    echo '<link rel="icon" type="image/svg+xml" href="' . esc_url( $dir . '/favicon.svg' ) . '">' . "\n";
+    echo '<link rel="icon" type="image/png" sizes="512x512" href="' . esc_url( $dir . '/favicon.png' ) . '">' . "\n";
+    echo '<link rel="apple-touch-icon" href="' . esc_url( $dir . '/favicon.png' ) . '">' . "\n";
+} );
+// Override WordPress Site Icon if set in Customizer
+add_filter( 'get_site_icon_url', function () {
+    return get_stylesheet_directory_uri() . '/assets/images/favicon.png';
 } );
 
 // ── Contact form AJAX ─────────────────────────────────────────
