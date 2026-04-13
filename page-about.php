@@ -54,11 +54,11 @@ $img_class     = wp_get_attachment_url(173);  // slideshow-class-2.webp
       </div>
       <div class="about-origin-text-col reveal-right">
         <span class="section-eyebrow">How it started</span>
-        <h2 class="about-origin-heading">A borrowed ramp.<br>A parking lot.<br>A few kids.</h2>
-        <p>It didn't start with a grant or a boardroom. It started with a community of skaters in DeKalb who kept seeing the same thing — kids with nowhere to go, no outlet, and no one showing up for them. So we showed up. With borrowed ramps, donated gear, and a parking lot on a Saturday afternoon. What grew out of those early sessions wasn't just a program — it was proof that a tight-knit skate community could become something bigger.</p>
+        <h2 class="about-origin-heading">A board.<br>A dream.<br>A community.</h2>
+        <p>Pushing Together started with a simple idea: every kid in DeKalb should get to experience skateboarding, no matter what their family can afford. A group of local skaters came together because they believed the confidence, creativity, and friendships that come from skating shouldn't have a price tag. So we made it free. We gathered boards, helmets, and pads, found a space, and opened the door to anyone who wanted to roll. What started as a few weekend sessions quickly grew into something bigger than any of us expected.</p>
         <blockquote class="about-pull-quote">
-          "Skateboarding gave us something to look forward to every week. We wanted every kid in DeKalb to have that feeling."
-          <cite>— The Pushing Together Community</cite>
+          "We just wanted to give kids the same thing skateboarding gave us. A place to belong."
+          <cite>The Pushing Together Community</cite>
         </blockquote>
       </div>
     </div>

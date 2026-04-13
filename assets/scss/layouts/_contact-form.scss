@@ -42,7 +42,7 @@
   position: relative;
   z-index: 1;
   max-width: 440px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .contact-eyebrow {
@@ -182,7 +182,7 @@
   background: #fafaf9;
   display: flex;
   align-items: center;
-  padding: calc(51px + 5rem) 4rem 5rem;
+  padding: calc(51px + 5rem) 4rem 5rem max(2rem, calc((100vw - #{$max-width}) / 2));
 
   @include tablet { padding: 10rem 2.5rem 4rem; }
   @include mobile { padding: 10rem 1.5rem 4rem; align-items: flex-start; }
@@ -191,7 +191,7 @@
 .contact-form-inner {
   width: 100%;
   max-width: 480px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .contact-form-heading {
